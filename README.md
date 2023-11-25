@@ -6,16 +6,7 @@ Userspace attacking: If you can write arbitrary memory space, you can use this m
 
 
 
-I learned the basic method from [Sammy Hajhamid][1] and considered making the payload shorter.
-There are two different types of shrink the payload:
-- Cover all GOT slots
-- Cover part of slots
-
-If we cover all the GOT slots, our payload can be triggered by more functions. Otherwise, if we make our payload shorter and only cover several GOT slots, our payload can only be triggered by fewer functions. Also, it's possible to crash other functions. I'll mainly focus on two scenarios
-- Generic Payload
-    - One Shot
-    - Two Shots
-- Common Functions
+I learned the basic method from [Sammy Hajhamid][1] also this repo is inspired by his work.
 
 # tl;dr
 
@@ -46,6 +37,16 @@ By attacking Glibc GOT, We can transform arbitrary write to RCE. I shrank the or
 > You can find the POC for each method [here][3].
 
 # Introduction
+
+There are two different types of shrink the payload:
+- Cover all GOT slots
+- Cover part of slots
+
+If we cover all the GOT slots, our payload can be triggered by more functions. Otherwise, if we make our payload shorter and only cover several GOT slots, our payload can only be triggered by fewer functions. Also, it's possible to crash other functions. I'll mainly focus on two scenarios
+- Generic Payload
+    - One Shot
+    - Two Shots
+- Common Functions
 
 We overwrite all the libc GOT slots, so as long as there is one function that triggers the functions that have libcGOT, the program will hit our gadgets. There is one very important gadget we gonna use. I'll name it PLT0 in this project.
 ```
