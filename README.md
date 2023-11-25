@@ -1,5 +1,10 @@
 # Libc-GOT-Hijacking
 
+Transform arbitrary write to RCE. 
+Userspace attacking: If you can write arbitrary memory space, you can use this method to execute arbitrary code.
+
+
+
 I learned the basic method from [Sammy Hajhamid][1] and considered making the payload shorter.
 There are two different types of shrink the payload:
 - Cover all GOT slots
