@@ -4,7 +4,7 @@ Transform arbitrary write to RCE.
 
 Userspace attacking: If you can write arbitrary memory space, you can use this method to execute arbitrary code.
 
-
+This skill works for glibc<=2.35
 
 I learned the basic method from [Sammy Hajhamid][1] also this repo is inspired by his work.
 
