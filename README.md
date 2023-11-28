@@ -2,10 +2,15 @@
 
 Transform arbitrary write to RCE. (This skill works for glibc<=2.35, more work needs to be done to bypass the mitigation after glib-2.35)
 
+
 Userspace attacking: If you can write arbitrary memory space, you can use this method to execute arbitrary code.
 
 
 I learned the basic method from [Sammy Hajhamid][1] also this repo is inspired by his work.
+
+
+Update for 2.25+ glibc:
+Found a way to exploit, it but had no time to generalize it, asked my friends for help... 
 
 # tl;dr
 
