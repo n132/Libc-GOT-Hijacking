@@ -4,12 +4,12 @@ Transform arbitrary write to RCE.
 
 This is a userspace attacking skill: If you can write arbitrary memory space, you can use this method to execute arbitrary code. 
 
-> You only need to know the base addres of glibc
+> You only need to know the base address of Glibc
 
 ## glibc > 2.35
 
-Comparing to glibc<=2.35 there is a mitigation implemented, whcih forbiden the methods for old library. However, we desgined a method to bypass it and execute arbitrary code by 
-once arbitrary write on Glibc's GOT table. This method performs Return Oriented Programming (ROP) attack on Global Offset Table (GOT). 
+Compared to glibc<=2.35 there is mitigation implemented, which forbids the methods for the old library. However, we desgined a method to bypass it and execute arbitrary code by 
+once arbitrary write on Glibc's GOT table. This method performs Return Oriented Programming (ROP) attack on the Global Offset Table (GOT). 
 
 ![AttackFlow](./Img/AttackFlow.png)
 
@@ -20,9 +20,9 @@ You can find details, templates, demos, and everything you want in: [Details][0]
 ## glibc <= 2.35
 
 
-I learned the orginal method from [Sammy Hajhamid][2] also the methods for glibc <=2.35 are inspired by his work.
+I learned the original method from [Sammy Hajhamid][2] also the methods for glibc <=2.35 are inspired by his work.
 
-Based on his work, We desgined a method to execute arbitrary code by once arbitrary write on Glibc's GOT table. The method uses `PLT_0` to push `libc_exe_address` to the stack and then use `POP RSP, RET` to execute our `ROPchain`.
+Based on his work, We designed a method to execute arbitrary code by once arbitrary write on Glibc's GOT table. The method uses `PLT_0` to push `libc_exe_address` to the stack and then use `POP RSP, RET` to execute our `ROPchain`.
 
 You can find details, templates, demos, and everything you want in: [Details][1] and [Templates][4]
 
@@ -30,7 +30,7 @@ You can find details, templates, demos, and everything you want in: [Details][1]
 
 - Great job [@swing][5] on the impressive work with glibc >2.35!
 
-- Appriciate the original work done by @pepsipu.
+- Appreciate the original work done by @pepsipu.
 
 # Reference link
 - [@pepsipu's Method][2]
