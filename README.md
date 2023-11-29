@@ -147,7 +147,7 @@ def fx1(libc: ELF, rop_chain = []):
         p64(plt0) * 0x36, flat(rop_chain))
 ```
 
-# fx2 - 0x1f0
+## fx2 - 0x1f0
 Setting the parameters is painful since we are at the bound of writable pages, the stack may reach the read-only pages and crashes the program. In fx1, we use ROP to avoid calling system while in fx2, we use some special gadget to pivot the stack.
 
 For example 
@@ -402,8 +402,34 @@ For example, x=4:
 
 `payload = flat([dest+0x18,pop_rsp,rdi,dest,gets,plt0])`
 
+# After glibc-2.36
+
+This [issue](https://github.com/n132/Libc-GOT-Hijacking/issues/1) mentions the problem that glibc 2.36 and later versions cannot be exploited, due to the GOT (Global Offset Table) headers in libc no longer being writable. However, we found that the .got.plt in libc is writable, hence we have the following method.
 
 
+
+This method has been verified on glibc 2.36 / 2.37 / 2.38.
+
+
+
+* Idea: perform ROP on GOT
+* Trigger puts, which is in the target binary
+* The puts function will call the `strlen` function, so it will trigger slot on .got.plt (Assuming the index of strlen is 0x10 in .got.plt)
+* We go to overwrite slot0x10, so we can hijack the program flow.
+* We prepare two gadgets, then call `gets`, and finally execute the ropchain we sent last.
+    - Frist Gadget is: `lea rdi, [rsp+24]; ...; call strncpy` (strncpy will also trigger on .got.plt, so we can overwrite it with the second gadget.). This gadget can be found in the `login`` function of libc.
+    - Second Gadget is: `call wcschr ; ...; mov rax, rbx; pop rbpx; pop rbp; pob r12; ret` ( `wcschr` will also trigger on .got.plt, so we can overwrite it with the final function (`gets`)).  This gadget can be found in the  `wcscspn` function of libc.
+* Finally, we use the `gets` function to receive the ropchain that we want to execute.
+
+
+
+![image-20231129175849131](./img/image-20231129175849131.png)
+
+[Exploit](./Code/after-glibc-2.35)
+
+![image-20231129182152841](./img/image-20231129182152841.png)
+
+# Reference link
 
 [1]: https://hackmd.io/@pepsipu/SyqPbk94a
 [2]: /Infra/SinkFinder.py
