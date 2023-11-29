@@ -423,11 +423,11 @@ This method has been verified on glibc 2.36 / 2.37 / 2.38.
 
 
 
-![image-20231129175849131](./img/image-20231129175849131.png)
+![image-20231129175849131](./Img/image-20231129175849131.png)
 
 [Exploit](./Code/after-glibc-2.35)
 
-![image-20231129182152841](./img/image-20231129182152841.png)
+![image-20231129182152841](./Img/image-20231129182152841.png)
 
 # Reference link
 
