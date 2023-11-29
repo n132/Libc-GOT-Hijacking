@@ -8,7 +8,7 @@ This is a userspace attacking skill: If you can write arbitrary memory space, yo
 
 ## glibc > 2.35
 
-Comparing glibc<=2.34, there is a mitigation implemented but we desgined a method to bypass it and execute arbitrary code by 
+Comparing to glibc<=2.35 there is a mitigation implemented, whcih forbiden the methods for old library. However, we desgined a method to bypass it and execute arbitrary code by 
 once arbitrary write on Glibc's GOT table. This method performs Return Oriented Programming (ROP) attack on Global Offset Table (GOT). 
 
 ![AttackFlow](./Img/AttackFlow.png)
