@@ -8,7 +8,6 @@ By attacking Glibc GOT, We can transform arbitrary write to RCE. I shrank the or
 
 
 
-
 | Method | Length | Trigger | Rank |
 | -------- | -------- | -------- | -------- |
 | Ori | 0x418 | Generic | 3 |
@@ -389,8 +388,8 @@ For example, x=4:
 
 `payload = flat([dest+0x18,pop_rsp,rdi,dest,gets,plt0])`
 
-
+[1]: https://hackmd.io/@pepsipu/SyqPbk94a
 [2]: ../Infra/SinkFinder.py
-[3]: ../Code
-[4]: ../Temp.md
+[3]: ./Demo/
+[4]: ./templates.md
 
