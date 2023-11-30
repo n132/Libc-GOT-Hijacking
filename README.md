@@ -39,5 +39,5 @@ You can find details, templates, demos, and everything you want in: [Details][1]
 [1]: ./Pre/README.md
 [2]: https://hackmd.io/@pepsipu/SyqPbk94a
 [3]: ./Post/one_punch.py
-[4]: ./Post/templates.md
+[4]: ./Pre/templates.md
 [5]: https://bestwing.me/
