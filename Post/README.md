@@ -20,6 +20,8 @@ Perform ROP on GOT
 
 # Exploitation and PoC
 
-You can find the demo [here](../Code/after-glibc-2.35). 
+You can find the demo [here][1]. 
 
 ![POC](../Img/POC.png)
+
+[1]:./one_punch.py
