@@ -1,5 +1,7 @@
 # Libc-GOT-Hijacking
 
+Glibc is FULL RELRO by default for glibc2.39. A great security improvement! We can't hijack Libc GOT on libc version >= 2.39
+
 Transform arbitrary write to RCE.
 
 This is a userspace attacking skill: If you can write arbitrary memory space, you can use this method to execute arbitrary code. 
@@ -8,7 +10,7 @@ This is a userspace attacking skill: If you can write arbitrary memory space, yo
 
 ## glibc > 2.35 & glibc <=2.38
 
-Compared to glibc<=2.35 there is mitigation implemented, which forbids the methods for the old library. However, we desgined a method to bypass it and execute arbitrary code by 
+Compared to glibc<=2.35 there is mitigation implemented, which forbids the methods for the old library. However, we designed a method to bypass it and execute arbitrary code by 
 once arbitrary write on Glibc's GOT table. This method performs Return Oriented Programming (ROP) attack on the Global Offset Table (GOT). 
 
 ![AttackFlow](./Img/AttackFlow.png)
@@ -40,7 +42,7 @@ You can find details, templates, demos, and everything you want in: [Details][1]
 # Todo
 - Provide the one\_gadget version
     - Only modify 0x10 bytes (gadget1 + one_gadget)
-- Fix it for latest glibc
+- Fix it for the latest Glibc
 
 [0]: ./Post/README.md
 [1]: ./Pre/README.md
