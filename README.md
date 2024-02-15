@@ -6,7 +6,7 @@ This is a userspace attacking skill: If you can write arbitrary memory space, yo
 
 > You only need to know the base address of Glibc
 
-## glibc > 2.35
+## glibc > 2.35 & glibc <=2.38
 
 Compared to glibc<=2.35 there is mitigation implemented, which forbids the methods for the old library. However, we desgined a method to bypass it and execute arbitrary code by 
 once arbitrary write on Glibc's GOT table. This method performs Return Oriented Programming (ROP) attack on the Global Offset Table (GOT). 
