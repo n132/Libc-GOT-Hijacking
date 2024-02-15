@@ -1,4 +1,4 @@
-# Libc-GOT-Hijacking (only works for libc<2.39)
+# Libc-GOT-Hijacking (only works for glibc < 2.39)
 
 Transform arbitrary write to RCE.
 
