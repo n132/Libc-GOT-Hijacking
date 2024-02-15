@@ -1,12 +1,12 @@
-# Libc-GOT-Hijacking
-
-Glibc is FULL RELRO by default for glibc2.39. A great security improvement! We can't hijack Libc GOT on libc version >= 2.39
+# Libc-GOT-Hijacking (only works for libc<2.39)
 
 Transform arbitrary write to RCE.
 
 This is a userspace attacking skill: If you can write arbitrary memory space, you can use this method to execute arbitrary code. 
 
 > You only need to know the base address of Glibc
+> Glibc is FULL RELRO by default for glibc2.39. A great security improvement! We can't hijack Libc GOT on libc version >= 2.39
+
 
 ## glibc > 2.35 & glibc <=2.38
 
