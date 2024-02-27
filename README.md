@@ -38,12 +38,6 @@ You can find details, templates, demos, and everything you want in: [Details][1]
 - [@pepsipu's Method][2]
 
 
-
-# Todo
-- Provide the one\_gadget version
-    - Only modify 0x10 bytes (gadget1 + one_gadget)
-- Fix it for the latest Glibc
-
 [0]: ./Post/README.md
 [1]: ./Pre/README.md
 [2]: https://hackmd.io/@pepsipu/SyqPbk94a
