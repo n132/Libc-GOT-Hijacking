@@ -1,4 +1,6 @@
-# Libc-GOT-Hijacking (only works for glibc < 2.39)
+# Libc-GOT-Hijacking 
+
+Important: You can only use this skill for glibcs < 2.39.
 
 Transform arbitrary write to RCE.
 
