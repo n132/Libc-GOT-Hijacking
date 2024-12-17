@@ -24,7 +24,7 @@ While exploiting a CTF challenge, I found `libstdc++` is a juicy target of this 
     FORTIFY:  Enabled
 ```
 
-I'll provide a demo later. A simple to get root is just to modify del/new got to `system` and `cin` the string `/bin/sh` (Kylebot told me people already found it even though they didn't show that publicly I just found that again). But if GOT is what we want, aha, we can do libc-got-hijacking! 
+I'll provide a demo later. A simple way to get a shell is just to modify `del/new` got to `system` and `cin` the string `/bin/sh` (Kylebot told me people already found it even though they didn't show that publicly I just re-find this technique). But if GOT is what we want, aha, we can do libc-got-hijacking! 
 
 ## glibc > 2.35 & glibc <=2.38
 
