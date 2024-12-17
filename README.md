@@ -9,6 +9,22 @@ This is a userspace attacking skill: If you can write arbitrary memory space, yo
 > You only need to know the base address of Glibc
 > Glibc is FULL RELRO by default for glibc2.39. A great security improvement! We can't hijack Libc GOT on libc version >= 2.39
 
+# Update (Dec 17th., 2024)
+
+While exploiting a CTF challenge, I found `libstdc++` a juicy target of this technique. It's still usable on the latest LTS-ubuntu(24.04).
+
+```sh
+[14:26:12] n132 :: xps  ➜  ~/Downloads/FL_Support_Center » pwn checksec /lib/x86_64-linux-gnu/libstdc++.so.6
+[*] '/lib/x86_64-linux-gnu/libstdc++.so.6'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    Canary found
+    NX:       NX enabled
+    PIE:      PIE enabled
+    FORTIFY:  Enabled
+```
+
+I'll provide a demo later. A simple to get root is just to modify del/new got to `system` and `cin` the string `/bin/sh` (Kylebot told me people already found it even though they didn't show that publicly I just found that again). But if GOT is what we want, aha, we can do libc-got-hijacking! 
 
 ## glibc > 2.35 & glibc <=2.38
 
