@@ -24,7 +24,7 @@ While exploiting a CTF challenge, I found `libstdc++` is a juicy target of this 
     FORTIFY:  Enabled
 ```
 
-I'll provide a demo later. A simple way to get a shell is just to modify `del/new` got to `system` and `cin` the string `/bin/sh` (Kylebot told me people already found it even though they didn't show that publicly I just re-find this technique). But if ROP is what we want, aha, we can do libs-got-hijacking (even though it's not necessary, it's a general solution!) 
+I'll provide a demo later. A simple way to get a shell is just to modify `del/new` got to `system` and `cin` the string `/bin/sh` (Kylebot told me people already found it even though they didn't show that publicly I just re-find this technique). But if ROP is what we want, aha, we can do libc-got-hijacking (even though it's unnecessary, it's a general solution!) 
 
 ## glibc > 2.35 & glibc <=2.38
 
