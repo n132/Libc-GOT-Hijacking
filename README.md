@@ -1,12 +1,8 @@
 # Libc-GOT-Hijacking 
 
 Transform arbitrary write to RCE.
-
 Libc makes it full RELRO at 2.39 so this skill doesn't work for glibc-2.39+.
 However, it works for the libstdc++ on the latest Ubuntu LTS.
-
-
-## Details
 
 This is a userspace attacking skill: If you can write arbitrary memory space, you can use this method to execute arbitrary code. 
 
