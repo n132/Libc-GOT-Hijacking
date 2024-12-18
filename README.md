@@ -25,7 +25,7 @@ While exploiting a CTF challenge, I found `libstdc++` is a juicy target of this 
 
 A simple way to get a shell is just to modify `fread/fwrite` got to `system` and `cin/cout` the string `/bin/sh`. But if ROP is what we want, we can do libc-got-hijacking (ROP over GOT) (even though it's unnecessary, it's a general solution!) 
 
-Here is a demo:
+Here is a demo (https://asciinema.org/a/krgiZ9HEX633nOhgT86OJy3aH)
 ```c
 [18:34:04] n132 :: xps  ➜  ~/demo » cat ./rce.cpp && g++ ./rce.cpp -o ./rce && echo "id" | ./rce
 #include <iostream>
