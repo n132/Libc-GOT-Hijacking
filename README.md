@@ -8,8 +8,8 @@ This is a userspace attacking skill: If you can write arbitrary memory space, yo
 
 > You only need to know the base address of Glibc
 
-# Update (Dec 17th., 2024)
-
+# Update 
+- Dec 17th., 2024
 While exploiting a CTF challenge, I found `libstdc++` is a juicy target of this technique. It's still usable on the latest LTS-ubuntu(24.04).
 
 ```sh
