@@ -43,7 +43,7 @@ int main(){
 uid=1000(n132) gid=1000(n132) groups=1000(n132),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users),114(lpadmin),984(docker)
 ```
 
-## glibc > 2.35 & glibc <=2.38
+## glibc [2.36,2.38]
 
 Compared to glibc<=2.35 there is mitigation implemented, which forbids the methods for the old library. However, we designed a method to bypass it and execute arbitrary code by 
 once arbitrary write on Glibc's GOT table. This method performs Return Oriented Programming (ROP) attack on the Global Offset Table (GOT). 
@@ -54,7 +54,7 @@ once arbitrary write on Glibc's GOT table. This method performs Return Oriented 
 You can find details, templates, demos, and everything you want in: [Details][0] and [Templates][3]
 
 
-## glibc <= 2.35
+## glibc [unk,2.35]
 
 
 I learned the original method from [Sammy Hajhamid][2] also the methods for glibc <=2.35 are inspired by his work.
