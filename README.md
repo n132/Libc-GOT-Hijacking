@@ -1,14 +1,17 @@
 # Libc-GOT-Hijacking 
 
 Transform arbitrary write to RCE.
-Libc makes it full RELRO at 2.39 so this skill doesn't work for glibc-2.39+.
-However, it works for the libstdc++ on the latest Ubuntu LTS.
+
+This repo provides an idea that performs ROP on GOT and demonstrates its ability (even most people would never use it because of the existing simple method). Also, this repo shows an ignored fact: writable libc got is useful for exploitation.
 
 This is a userspace attacking skill: If you can write arbitrary memory space, you can use this method to execute arbitrary code. 
 
-> You only need to know the base address of Glibc
-
 The simplest way to attack is to find a function using writable GOT value and set it `system` to perform `system("/bin/sh")`. It depends on the challenges/cases and it's **good enough** for most cases and this repo is giving a more complex/verbose solution to gain not only RIP but ROP for generic cases.
+
+
+> You only need to know the base address of Glibc
+> Libc makes it full RELRO at 2.39 so this skill doesn't work for glibc-2.39+.
+> However, it works for the libstdc++ on the latest Ubuntu LTS.
 
 # Before Reading
 
