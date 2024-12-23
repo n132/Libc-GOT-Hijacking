@@ -8,7 +8,9 @@ This is a userspace attacking skill: If you can write arbitrary memory space, yo
 
 > You only need to know the base address of Glibc
 
-The simplest way to attack is to find a function using writable GOT value and set it `system` to perform `system("/bin/sh")`. It depends on the challenges/cases and it's **good enough** for most cases and this repo is giving a more complex/verbose solution to gain not only RIP but ROP.
+The simplest way to attack is to find a function using writable GOT value and set it `system` to perform `system("/bin/sh")`. It depends on the challenges/cases and it's **good enough** for most cases and this repo is giving a more complex/verbose solution to gain not only RIP but ROP for generic cases.
+
+# Before Reading
 
 
 # Update 
