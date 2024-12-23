@@ -12,7 +12,7 @@ The simplest way to attack is to find a function using writable GOT value and se
 
 # Before Reading
 
-This repo is a generic solution to gain RCE(ROP level). 
+This repo is a generic solution to gain Code Execution (ROP level). 
 - You don't need this repo **unless**
     - You just want a generic solution without spending time debugging a specific case
     - You need ROP instead of system("/bin/sh").
