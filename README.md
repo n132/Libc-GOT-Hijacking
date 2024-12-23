@@ -12,6 +12,16 @@ The simplest way to attack is to find a function using writable GOT value and se
 
 # Before Reading
 
+This repo is a generic solution to gain RCP(ROP level). 
+- You don't need this repo **unless**
+    - You just want a generic solution without spending time debugging a specific case
+    - You need ROP instead of system("/bin/sh").
+ 
+For most simple cases, the simple solution is:
+- Hijack one got entry (<=6 bytes write)
+- Find a trigger function for which the parameters are nice.
+    - Case 1: The trigger function takes controllable parameters. (e.g., `some_func(str)`). We set `some_func`'s got to `system`.
+    - Case 2: The trigger function takes stack pointers (in a retunable function stack frame) as the first parameter. -> We set it to `gets` to get a buffer overflow.
 
 # Update 
 - Dec 17th., 2024
